@@ -7,6 +7,8 @@
 	<title>数据演算</title>
 <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="a.css" />
+	<link rel="stylesheet" type="text/css" href="b.css" />
 	 <script type="text/javascript" src="decimal.js"></script>
  <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
 	<style type="text/css">
@@ -147,59 +149,115 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
-                    <form class="form-horizontal">
-                        <span class="heading">Risk Stratification of long-term recurrence of craniopharyngioma</span>
-                        <div class="form-group">
-							<label for="password" class="col-sm-offset-2 col-sm-2 control-label">Age</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="age" placeholder="age">
-                            </div>
-                        </div>
-						
-                        <div class="form-group ">
-							<label for="password" class="col-sm-offset-2 col-sm-2 control-label">Tumoresize</label>
-							<div class="col-sm-5">
-								<input type="text" class="form-control" id="tumoresize" placeholder="tumore_size">
-							</div>
-                      
-						</div>
-						
-						   <div class="form-group">	
-						   	<label for="password" class="col-sm-offset-2 col-sm-2 control-label">Hypothalamus_invasion</label>
-								<div class="col-sm-9">
-								   <input type="radio" name="invasion" value="1"> YES
-								   <input type="radio" name="invasion" value="0"> NO
-							   </div>
-						   </div>
-						   <div class="form-group">
-						   	<label for="password" class="col-sm-offset-2 col-sm-2 control-label">Calcification</label>
-						   								<div class="col-sm-9">
-						   								   <input type="radio" name="Calcification" value="1"> YES
-						   								   <input type="radio" name="Calcification" value="0"> NO
-						   							   </div>
-						   </div>
-						   <div class="form-group">
-						   	<label for="password" class="col-sm-offset-2 col-sm-2 control-label">Subtotal_resection</label>
-						   								<div class="col-sm-9">
-						   								   <input type="radio" name="resection" value="1"> YES
-						   								   <input type="radio" name="resection" value="0"> NO
-						   							   </div>
-						   </div>
-                        <div class="form-group">				
-                            <button type="button" id="calculate" class="btn btn-default">calculate</button>
-						
-					
-										<label for="password" class="col-sm-offset-2 col-sm-2 control-label">result：</label>
 
-                        </div>
-						      <div class="form-group">	
-								  <input type="text" class="form-control" id="result" placeholder="" readonly="readonly">
-							  </div>
-						 <div class="form-group">
-							 Note:For socre over 0.807 are considered as high risk group, please review MRI every 6 months at least
+			   <div class="nomograms-form" style="background-color: #FFFFFF;">
+				   <div class="nomograms-header"><h2>Risk Stratification of long-term recurrence of craniopharyngioma</h2>
+				</div><div id="nomograms-inputs" class="nomograms-inputs">
+			   <div class="js-form-item form-item js-form-type-number form-type-number js-form-item-age form-item-age">
+			         <label for="edit-age">Age at diagnosis?</label>
+			           <input data-drupal-selector="edit-age" placeholder="age" type="number" id="age" name="age" value="" step="any" min="20" max="99" class="form-number">
+			   
+			
+			           </div>
+			   
+			   <div class="js-form-item form-item js-form-type-select form-type-select js-form-item-sex form-item-sex">
+			         <label for="edit-sex">Tumor size ()mm (0-123)</label>
+			      <input data-drupal-selector="edit-age" placeholder="tumore_size" type="number" id="tumoresize" name="tumoresize" value="" step="any" min="20" max="99" class="form-number">
+			      			   
+			           </div>
+			   
+		
+		
+
+			   <fieldset data-drupal-selector="edit-lymphovascular-invasion" aria-describedby="edit-lymphovascular-invasion--wrapper--description" id="edit-lymphovascular-invasion--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+			         <legend>
+			       <span class="fieldset-legend">Was there hypothalamic involvement?</span>
+			     </legend>
+			     <div class="fieldset-wrapper">
+			           <div id="edit-lymphovascular-invasion" class="form-radios">
+			   <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-lymphovascular-invasion form-item-lymphovascular-invasion">
+			           <input data-drupal-selector="edit-lymphovascular-invasion-true" aria-describedby="edit-lymphovascular-invasion--description" type="radio" id="edit-lymphovascular-invasion-true" name="invasion" value="1" class="form-radio">
+			   
+			           <label for="edit-lymphovascular-invasion-true" class="option">Yes</label>
+			         </div>
+			   
+			   <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-lymphovascular-invasion form-item-lymphovascular-invasion">
+			           <input data-drupal-selector="edit-lymphovascular-invasion-false" aria-describedby="edit-lymphovascular-invasion--description" type="radio" id="edit-lymphovascular-invasion-false" name="invasion" value="0" class="form-radio">
+			   
+			           <label for="edit-lymphovascular-invasion-false" class="option">No</label>
+			         </div>
+			   </div>
+			   
+			       <!--          <div id="edit-lymphovascular-invasion--wrapper--description" class="description"><dl class="nomograms-toggle-definition"><dt><a href="#">What is lymphovascular invasion?</a></dt><dd>Lymphovascular invasion means that cancer cells were found in the vessels of the colon (arteries, veins, and/or lymphatics).</dd></dl></div>
+			           --> 
 						 </div>
-					</form>
-                </div>
+			   </fieldset>
+			   
+			   <fieldset data-drupal-selector="edit-chemotherapy-after-surgery" aria-describedby="edit-chemotherapy-after-surgery--wrapper--description" id="edit-chemotherapy-after-surgery--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+			         <legend>
+			       <span class="fieldset-legend">Was there calcification?</span>
+			     </legend>
+			     <div class="fieldset-wrapper">
+			           <div id="edit-chemotherapy-after-surgery" class="form-radios">
+			   <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-chemotherapy-after-surgery form-item-chemotherapy-after-surgery">
+			           <input data-drupal-selector="edit-chemotherapy-after-surgery-true" aria-describedby="edit-chemotherapy-after-surgery--description" type="radio" id="edit-chemotherapy-after-surgery-true" name="Calcification" value="1" class="form-radio">
+			   
+			           <label for="edit-chemotherapy-after-surgery-true" class="option">Yes</label>
+			         </div>
+			   
+			   <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-chemotherapy-after-surgery form-item-chemotherapy-after-surgery">
+			           <input data-drupal-selector="edit-chemotherapy-after-surgery-false" aria-describedby="edit-chemotherapy-after-surgery--description" type="radio" id="edit-chemotherapy-after-surgery-false" name="Calcification" value="0" class="form-radio">
+			   
+			           <label for="edit-chemotherapy-after-surgery-false" class="option">No</label>
+			         </div>
+			   </div>
+			   
+			       <!--          <div id="edit-chemotherapy-after-surgery--wrapper--description" class="description">Note: Results produced by this tool are based on data from patients treated from 1990 to 2000, when fluorouracil was the only active agent in adjuvant chemotherapy for colon cancer. </div>
+			            -->
+						 </div>
+			   </fieldset>
+			   
+			   <fieldset data-drupal-selector="edit-perineural-invasion" aria-describedby="edit-perineural-invasion--wrapper--description" id="edit-perineural-invasion--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+			         <legend>
+			       <span class="fieldset-legend">Did you receive subtotal resecion?</span>
+			     </legend>
+			     <div class="fieldset-wrapper">
+			           <div id="edit-perineural-invasion" class="form-radios">
+			   <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-perineural-invasion form-item-perineural-invasion">
+			           <input data-drupal-selector="edit-perineural-invasion-true" aria-describedby="edit-perineural-invasion--description" type="radio" id="edit-perineural-invasion-true" name="resection" value="1" class="form-radio">
+			   
+			           <label for="edit-perineural-invasion-true" class="option">Yes</label>
+			         </div>
+			   
+			   <div class="js-form-item form-item js-form-type-radio form-type-radio js-form-item-perineural-invasion form-item-perineural-invasion">
+			           <input data-drupal-selector="edit-perineural-invasion-false" aria-describedby="edit-perineural-invasion--description" type="radio" id="edit-perineural-invasion-false" name="resection" value="0" class="form-radio">
+			   
+			           <label for="edit-perineural-invasion-false" class="option">No</label>
+			         </div>
+			   </div>
+			   
+			       <!--          <div id="edit-perineural-invasion--wrapper--description" class="description"><dl class="nomograms-toggle-definition"><dt><a href="#">What is perineural invasion?</a></dt><dd>Perineural invasion means that cancer cells were found in or around the nerves near the colon or rectum.</dd></dl></div>
+			          -->
+						 </div>
+			   </fieldset>
+			   
+			   <div class="js-form-item form-item js-form-type-number form-type-number js-form-item-number-of-positive-lymph-nodes form-item-number-of-positive-lymph-nodes">
+			      <legend>
+			        <span class="fieldset-legend">Result：</span>
+			      </legend>
+			           <input style="background-color: #dfdfd8;" data-drupal-selector="edit-number-of-positive-lymph-nodes" readonly="readonly" aria-describedby="edit-number-of-positive-lymph-nodes--description" type="text" id="result" name="number_of_positive_lymph_nodes" value="" step="1" min="0" max="24" class="form-number">
+			   <!-- 
+			         <span class="field-suffix">nodes <span class="field-range">(0 to 24)</span></span> -->
+			               <div id="edit-number-of-positive-lymph-nodes--description" class="description">
+			         <dl class="nomograms-toggle-definition"><dt><a href="#">Note:For patients at high risk group, please review MRI every 6 months at least</a></dt>
+</dl>
+			       </div>
+			     </div>
+			   
+	
+			   </div><div class="nomograms-buttons"><input class="button--primary button js-form-submit form-submit" data-drupal-selector="edit-submit" type="submit" id="calculate" name="op" value="Calculate">
+</div></div>
+				</div>
             </div>
         </div>
     </div>
@@ -208,11 +266,23 @@
 			var resection = $("input[name='resection']:checked").val();
 			var Calcification = $("input[name='Calcification']:checked").val();
 			var invasion = $("input[name='invasion']:checked").val();
-				var age = new Decimal($('#age').val());tumoresize
+				var age = new Decimal($('#age').val());
 					var tumoresize = new Decimal($('#tumoresize').val());
 					var y = -0.00716193007601608*age+0.011265957894073*tumoresize+0.296475897791319*invasion+0.0890375019288236*Calcification+0.999796354356752*resection
-					$('#result').val(y);
-			console.log($('#age').val())
+					if(y>=0.807){
+							console.log($('#age').val())
+							var n ='High risk';
+						$('#result').val(n);
+					}else{
+							console.log($('#age').val())
+							
+							
+							var n ='Low risk';
+						$('#result').val(n);
+					}
+					
+					// $('#result').val(y);
+		
 		})
 		</script>
 </body>
